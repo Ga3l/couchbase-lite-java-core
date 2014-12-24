@@ -1081,8 +1081,8 @@ public final class Database {
 
         if (dbVersion < 15) {
             // Version 15: Add sequence index on maps and attachments for revs(sequence) on DELETE CASCADE
-            String upgradeSql =  "CREATE INDEX maps_sequence ON maps(sequence); " +
-                    "CREATE INDEX attachments_sequence ON attachments(sequence); " +
+            String upgradeSql =  "CREATE INDEX IF NOT EXISTS maps_sequence ON maps(sequence); " +
+                    "CREATE INDEX IF NOT EXISTS attachments_sequence ON attachments(sequence); " +
                     "PRAGMA user_version = 15";
             if (!initialize(upgradeSql)) {
                 database.close();
