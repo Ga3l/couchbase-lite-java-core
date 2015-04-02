@@ -103,9 +103,9 @@ public class RevisionInternal {
     @Override
     public boolean equals(Object o) {
         boolean result = false;
-        if (o instanceof RevisionInternal) {
+        if (o != null && o instanceof RevisionInternal) {
             RevisionInternal other = (RevisionInternal) o;
-            if (docId.equals(other.docId) && revId.equals(other.revId)) {
+            if (docId != null && docId.equals(other.docId) && revId != null && revId.equals(other.revId)) {
                 result = true;
             }
         }
