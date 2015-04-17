@@ -577,7 +577,8 @@ public class PullerInternal extends ReplicationInternal implements ChangeTracker
      */
     @InterfaceAudience.Private
     public void pullRemoteRevision(final RevisionInternal rev) {
-
+        if(rev == null || rev.getDocId() == null || rev.getRevId() == null)
+            return;
         Log.d(Log.TAG_SYNC, "%s: pullRemoteRevision with rev: %s", this, rev);
 
         ++httpConnectionCount;
